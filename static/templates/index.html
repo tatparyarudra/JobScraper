@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Remote OK Job Scraper</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Remote OK Job Scraper</h1>
+    <form method="POST">
+      <input type="text" name="keyword" placeholder="Enter job keyword (e.g. Python, React)">
+      <button type="submit">Search</button>
+    </form>
+
+    {% if jobs %}
+      <table>
+        <thead>
+          <tr>
+            <th>Job Title</th>
+            <th>Company</th>
+            <th>Location</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for job in jobs %}
+            <tr>
+              <td>{{ job.Title }}</td>
+              <td>{{ job.Company }}</td>
+              <td>{{ job.Location }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% endif %}
+  </div>
+</body>
+</html>
